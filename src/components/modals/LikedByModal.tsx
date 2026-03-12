@@ -13,12 +13,36 @@ interface Props {
   onClose: () => void;
 }
 
+interface LikeUser {
+  id: number;
+  name: string;
+  username: string;
+  avatarUrl?: string | null;
+  isFollowedByMe?: boolean;
+}
+
+interface AuthUser {
+  username: string;
+}
+
+interface ModalContentProps {
+  users: LikeUser[];
+  isLoading: boolean;
+  me: AuthUser | null;
+  onClose: () => void;
+  router: ReturnType<typeof useRouter>;
+}
+
+interface UserRowProps {
+  user: LikeUser;
+  isMe: boolean;
+  onNavigate: () => void;
+}
+
 export default function LikedByModal({ postId, open, onClose }: Props) {
-  // Only fetch when modal is open, and refetch every time it opens
   const { data, isLoading } = usePostLikes(postId, open);
   const { user: me } = useAppSelector((s) => s.auth);
   const router = useRouter();
-  // data is User[] directly, not { users: [] }
   const users = Array.isArray(data) ? data : [];
 
   return (
@@ -33,26 +57,12 @@ export default function LikedByModal({ postId, open, onClose }: Props) {
             className="fixed inset-0 z-50 bg-black/70"
           />
 
-          {/* Mobile: slides up from bottom */}
-          <motion.div
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "100%" }}
-            transition={{ type: "spring", stiffness: 380, damping: 38 }}
-            className="md:hidden block fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-t-2xl overflow-hidden bg-[#111111]"
-            style={{ maxHeight: "80vh" }}
-          >
-            <ModalContent users={users} isLoading={isLoading} me={me} onClose={onClose} router={router} />
-          </motion.div>
-
-          {/* Desktop: centered */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden md:block fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md rounded-2xl overflow-hidden bg-[#111111]"
-            style={{ maxHeight: "80vh" }}
+            className="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-md max-h-[80vh] rounded-2xl overflow-hidden bg-[#111111]"
           >
             <ModalContent users={users} isLoading={isLoading} me={me} onClose={onClose} router={router} />
           </motion.div>
@@ -62,17 +72,17 @@ export default function LikedByModal({ postId, open, onClose }: Props) {
   );
 }
 
-function ModalContent({ users, isLoading, me, onClose, router }: any) {
+function ModalContent({ users, isLoading, me, onClose, router }: ModalContentProps) {
   return (
     <>
-      <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-800">
+      <div className="flex items-center justify-between px-5 py-4 border-b border-white/8">
         <h3 className="text-white font-bold text-lg">Likes</h3>
         <button onClick={onClose} className="text-zinc-400 hover:text-white transition-colors">
           <X size={20} />
         </button>
       </div>
 
-      <div className="overflow-y-auto" style={{ maxHeight: "60vh" }}>
+      <div className="overflow-y-auto max-h-[60vh]">
         {isLoading ? (
           <div className="flex justify-center py-10">
             <div className="w-6 h-6 rounded-full border-2 border-violet-600 border-t-transparent animate-spin" />
@@ -80,7 +90,7 @@ function ModalContent({ users, isLoading, me, onClose, router }: any) {
         ) : users.length === 0 ? (
           <p className="text-zinc-500 text-sm text-center py-10">No likes yet</p>
         ) : (
-          users.map((u: any) => (
+          users.map((u) => (
             <UserRow
               key={u.id}
               user={u}
@@ -94,7 +104,7 @@ function ModalContent({ users, isLoading, me, onClose, router }: any) {
   );
 }
 
-function UserRow({ user, isMe, onNavigate }: { user: any; isMe: boolean; onNavigate: () => void }) {
+function UserRow({ user, isMe, onNavigate }: UserRowProps) {
   const { mutate: toggleFollow, isPending } = useToggleFollow(user.username);
 
   return (

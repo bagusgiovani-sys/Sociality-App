@@ -39,28 +39,27 @@ export default function ProfileTabs({
 
   const tabs = isMyProfile
     ? [
-        { key: "gallery", label: "Gallery", icon: LayoutGrid },
-        { key: "saved", label: "Saved", icon: Bookmark },
-        { key: "liked", label: "Liked", icon: Heart },
-      ]
+      { key: "gallery", label: "Gallery", icon: LayoutGrid },
+      { key: "saved", label: "Saved", icon: Bookmark },
+      { key: "liked", label: "Liked", icon: Heart },
+    ]
     : [
-        { key: "gallery", label: "Gallery", icon: LayoutGrid },
-        { key: "liked", label: "Liked", icon: Heart },
-      ];
+      { key: "gallery", label: "Gallery", icon: LayoutGrid },
+      { key: "liked", label: "Liked", icon: Heart },
+    ];
 
   const activeIndex = tabs.findIndex((t) => t.key === tab);
 
   return (
     <div className="max-w-2xl md:mx-auto">
       {/* Tab bar */}
-      <div className="relative flex border-b border-white/[0.08]">
+      <div className="relative flex border-b border-white/8">
         {tabs.map(({ key, label, icon: Icon }) => (
           <button
             key={key}
             onClick={() => setTab(key as any)}
-            className={`relative flex-1 flex items-center justify-center gap-2 py-3 text-sm font-semibold transition-colors ${
-              tab === key ? "text-white" : "text-[#a3a3a3]"
-            }`}
+            className={`relative flex-1 flex items-center justify-center gap-2 py-3 text-sm font-semibold transition-colors ${tab === key ? "text-white" : "text-[#a3a3a3]"
+              }`}
           >
             <Icon size={16} />
             {label}
@@ -68,11 +67,8 @@ export default function ProfileTabs({
         ))}
         {/* Sliding underline — pure CSS, no layout recalc */}
         <span
-          className="absolute bottom-0 h-0.5 rounded-full bg-white transition-transform duration-200 ease-out"
-          style={{
-            width: `${100 / tabs.length}%`,
-            transform: `translateX(${activeIndex * 100}%)`,
-          }}
+          className={`absolute bottom-0 h-0.5 rounded-full bg-white transition-transform duration-200 ease-out ${tabs.length === 2 ? "w-1/2" : "w-1/3"}`}
+          style={{ transform: `translateX(${activeIndex * 100}%)` }}
         />
       </div>
 

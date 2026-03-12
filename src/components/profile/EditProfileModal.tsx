@@ -65,7 +65,7 @@ export default function EditProfileModal({ open, onClose }: Props) {
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.div
-            className="sticky top-0 z-10 flex items-center gap-3 px-4 h-14 border-b border-white/[0.08] bg-[#0a0a0a] shrink-0"
+            className="sticky top-0 z-10 flex items-center gap-3 px-4 h-14 border-b border-white/8 bg-[#0a0a0a] shrink-0"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.3 }}

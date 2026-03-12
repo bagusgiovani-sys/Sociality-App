@@ -50,12 +50,10 @@ function UserRow({ user, onNavigate }: { user: SearchUser; onNavigate: () => voi
           whileTap={{ scale: 0.93 }}
           disabled={isPending}
           onClick={() => toggleFollow(user.isFollowedByMe ?? false)}
-          className="ml-3 flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold shrink-0 transition-all disabled:opacity-50"
-          style={
-            user.isFollowedByMe
-              ? { background: "transparent", border: "1px solid rgba(255,255,255,0.15)", color: "white" }
-              : { background: "#7C3AED", color: "white" }
-          }
+          className={`ml-3 flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold shrink-0 transition-all disabled:opacity-50 ${user.isFollowedByMe
+              ? "bg-transparent border border-white/15 text-white"
+              : "bg-[#7C3AED] text-white"
+            }`}
         >
           {user.isFollowedByMe ? (
             <><UserCheck size={12} /> Following</>
@@ -112,8 +110,7 @@ export default function SearchModal({ open, onClose, initialQuery = "" }: Props)
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50"
-            style={{ background: "rgba(0,0,0,0.7)", backdropFilter: "blur(4px)" }}
+            className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
             onClick={onClose}
           />
 
@@ -123,17 +120,11 @@ export default function SearchModal({ open, onClose, initialQuery = "" }: Props)
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -12 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed z-50 w-full max-w-md rounded-2xl overflow-hidden shadow-2xl"
-            style={{
-              top: "50%", left: "50%", translate: "-50% -50%",
-              background: "#111111",
-              border: "1px solid rgba(255,255,255,0.08)",
-            }}
+            className="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-md rounded-2xl overflow-hidden shadow-2xl bg-[#111111] border border-white/8"
           >
             {/* Search input */}
             <div
-              className="flex items-center gap-3 px-5 py-4 border-b"
-              style={{ borderColor: "rgba(255,255,255,0.08)" }}
+              className="flex items-center gap-3 px-5 py-4 border-b border-white/8"
             >
               <Search size={18} className="text-zinc-500 shrink-0" />
               <input

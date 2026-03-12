@@ -69,7 +69,7 @@ export default function CreatePostModal({ open, onClose }: Props) {
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.div
-            className="flex items-center justify-between px-4 h-14 border-b border-white/[0.08] shrink-0"
+            className="flex items-center justify-between px-4 h-14 border-b border-white/8 shrink-0"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.3 }}
@@ -102,9 +102,8 @@ export default function CreatePostModal({ open, onClose }: Props) {
                       onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
                       onDragLeave={() => setIsDragging(false)}
                       onDrop={onDrop}
-                      className={`cursor-pointer flex flex-col items-center justify-center gap-2 rounded-xl py-10 bg-[#111111] transition-colors border-[1.5px] border-dashed ${
-                        errors.image ? "border-[#D9206E]" : isDragging ? "border-[#7C3AED]" : "border-white/15"
-                      }`}
+                      className={`cursor-pointer flex flex-col items-center justify-center gap-2 rounded-xl py-10 bg-[#111111] transition-colors border-[1.5px] border-dashed ${errors.image ? "border-[#D9206E]" : isDragging ? "border-[#7C3AED]" : "border-white/15"
+                        }`}
                     >
                       <Upload size={28} className="text-zinc-500" />
                       <p className="text-sm">

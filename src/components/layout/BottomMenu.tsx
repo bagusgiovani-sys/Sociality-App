@@ -41,7 +41,7 @@ export default function BottomMenu() {
             : { y: 0, opacity: 1, scale: 1 }
           }
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="flex items-center gap-3 p-1.5 px-2.5 mb-8 md:mb-0 rounded-full bg-[#111111] border border-white/[0.08]"
+          className="flex items-center gap-3 p-1.5 px-2.5 mb-8 md:mb-0 rounded-full bg-[#111111] border border-white/8"
         >
           {/* Home */}
           {[{ key: "home", label: "Home", icon: Home, onClick: () => router.push("/feed") }].map(({ key, label, icon: Icon, onClick }) => {

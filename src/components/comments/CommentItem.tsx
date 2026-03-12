@@ -43,8 +43,7 @@ export default function CommentItem({ comment, postId }: Props) {
         <button
           onClick={() => deleteComment(comment.id)}
           disabled={isPending}
-          className="text-zinc-600 hover:text-accent-red transition-colors shrink-0 mt-1"
-          style={{ color: isPending ? "#525252" : undefined }}
+          className={`shrink-0 mt-1 transition-colors ${isPending ? "text-zinc-700" : "text-zinc-600 hover:text-accent-red"}`}
         >
           <Trash2 size={14} />
         </button>

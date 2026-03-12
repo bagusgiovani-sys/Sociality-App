@@ -1,6 +1,5 @@
 # Sociality
 
-A full-stack Instagram-inspired social media app built with Next.js 15 and a custom REST API backend.
 
 🔗 **Live Demo:** [social-media-app-sociality-v1.vercel.app](https://social-media-app-sociality-v1.vercel.app)
 
@@ -83,7 +82,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 **State Management** — Auth state (user, token) lives in Redux for global access. All server data (posts, profiles, feed) is managed by TanStack Query with automatic caching and invalidation.
 
-**Zero inline styles** — All styling done with Tailwind CSS v4 utility classes including arbitrary values (`bg-[#111111]`, `border-white/[0.08]`) — no `style=` attributes anywhere.
+**Smooth Framer-Motion** — The animations in this project are built with Framer Motion throughout, creating a cohesive, app-like feel:
 
 ---
 

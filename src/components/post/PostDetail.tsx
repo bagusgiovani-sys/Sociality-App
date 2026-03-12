@@ -56,7 +56,7 @@ export default function PostDetail({ post, onClose }: Props) {
     if (navigator.share) {
       try {
         await navigator.share({ title: p.author?.name ?? "Sociality", text: p.caption ?? "Check out this post!", url });
-      } catch {}
+      } catch { }
     } else {
       await navigator.clipboard.writeText(url);
       toast.success("Link copied to clipboard!");
@@ -120,7 +120,7 @@ export default function PostDetail({ post, onClose }: Props) {
           </div>
 
           <motion.div
-            className="px-5 pb-4 border-b border-white/[0.08]"
+            className="px-5 pb-4 border-b border-white/8"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.35, ease }}
@@ -153,7 +153,7 @@ export default function PostDetail({ post, onClose }: Props) {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: -4 }}
                         transition={{ duration: 0.18 }}
-                        className="absolute right-0 mt-1 rounded-xl overflow-hidden shadow-xl z-10 bg-[#1a1a1a] border border-white/[0.08]"
+                        className="absolute right-0 mt-1 rounded-xl overflow-hidden shadow-xl z-10 bg-[#1a1a1a] border border-white/8"
                       >
                         <button onClick={handleDelete} disabled={deletePending} className="block w-full px-5 py-2.5 text-sm text-left text-[#D9206E] hover:bg-zinc-800 transition-colors">
                           Delete Post
@@ -172,7 +172,7 @@ export default function PostDetail({ post, onClose }: Props) {
           </div>
 
           <motion.div
-            className="flex items-center justify-between px-5 py-3 border-t border-white/[0.08] shrink-0"
+            className="flex items-center justify-between px-5 py-3 border-t border-white/8 shrink-0"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.28, duration: 0.35, ease }}

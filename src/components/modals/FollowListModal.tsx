@@ -50,19 +50,11 @@ export default function FollowListModal({ open, type, username, onClose }: Props
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.18 }}
-            className="fixed z-50 w-full max-w-md rounded-2xl overflow-hidden"
-            style={{
-              top: "50%",
-              left: "50%",
-              translate: "-50% -50%",
-              background: "#111111",
-              maxHeight: "80vh",
-            }}
+            className="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-md max-h-[80vh] rounded-2xl overflow-hidden bg-[#111111]"
           >
             {/* Header */}
             <div
-              className="flex items-center justify-between px-5 py-4 border-b"
-              style={{ borderColor: "rgba(255,255,255,0.08)" }}
+              className="flex items-center justify-between px-5 py-4 border-b border-white/8"
             >
               <h3 className="text-white font-bold text-lg capitalize">{type}</h3>
               <button onClick={onClose} className="text-zinc-400 hover:text-white transition-colors">
@@ -71,7 +63,7 @@ export default function FollowListModal({ open, type, username, onClose }: Props
             </div>
 
             {/* List */}
-            <div className="overflow-y-auto" style={{ maxHeight: "60vh" }}>
+            <div className="overflow-y-auto max-h-[60vh]">
               {isLoading ? (
                 <div className="flex justify-center py-10">
                   <div className="w-6 h-6 rounded-full border-2 border-violet-600 border-t-transparent animate-spin" />
@@ -101,8 +93,7 @@ function UserRow({ user, isMe, onNavigate }: { user: any; isMe: boolean; onNavig
 
   return (
     <div
-      className="flex items-center gap-3 mx-4 my-2 px-4 py-3 rounded-2xl"
-      style={{ background: "#1a1a1a" }}
+      className="flex items-center gap-3 mx-4 my-2 px-4 py-3 rounded-2xl bg-[#1a1a1a]"
     >
       <div
         onClick={onNavigate}
@@ -138,8 +129,7 @@ function UserRow({ user, isMe, onNavigate }: { user: any; isMe: boolean; onNavig
           <button
             onClick={() => toggleFollow(false)}
             disabled={isPending}
-            className="px-5 py-1.5 rounded-full text-sm font-bold text-white transition-opacity disabled:opacity-50"
-            style={{ background: "#7C3AED" }}
+            className="px-5 py-1.5 rounded-full text-sm font-bold text-white bg-[#7C3AED] transition-opacity disabled:opacity-50"
           >
             Follow
           </button>

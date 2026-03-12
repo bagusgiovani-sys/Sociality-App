@@ -16,7 +16,7 @@ export default function CommentSection({ postId }: Props) {
   return (
     <div className="flex flex-col h-full bg-[#111111]">
       {/* Header */}
-      <div className="px-5 py-4 border-b border-white/[0.08] shrink-0">
+      <div className="px-5 py-4 border-b border-white/8 shrink-0">
         <h3 className="text-white font-bold text-lg">Comments</h3>
       </div>
 

@@ -8,9 +8,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Smile } from "lucide-react";
 
 const EMOJIS = [
-  "😀","😂","🤩","😊","🙂","😜","🤔","🥲","😌","😔",
-  "🥹","😭","😤","😡","😱","🤯","😎","🥳","😍","❤️",
-  "🔥","✨","💯","👍","🙌","💀","😅","🫶","💕","🎉",
+  "😀", "😂", "🤩", "😊", "🙂", "😜", "🤔", "🥲", "😌", "😔",
+  "🥹", "😭", "😤", "😡", "😱", "🤯", "😎", "🥳", "😍", "❤️",
+  "🔥", "✨", "💯", "👍", "🙌", "💀", "😅", "🫶", "💕", "🎉",
 ];
 
 interface Props {
@@ -48,8 +48,7 @@ export default function CommentComposer({ postId }: Props) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.15 }}
-            className="absolute bottom-full left-0 mb-2 p-3 rounded-2xl grid grid-cols-6 gap-2 shadow-xl z-10"
-            style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.08)" }}
+            className="absolute bottom-full left-0 mb-2 p-3 rounded-2xl grid grid-cols-6 gap-2 shadow-xl z-10 bg-[#1a1a1a] border border-white/8"
           >
             {EMOJIS.map((e) => (
               <button
@@ -66,8 +65,7 @@ export default function CommentComposer({ postId }: Props) {
 
       {/* Input bar */}
       <div
-        className="flex items-center gap-3 px-4 py-3 border-t"
-        style={{ borderColor: "rgba(255,255,255,0.08)", background: "#111111" }}
+        className="flex items-center gap-3 px-4 py-3 border-t border-white/8 bg-[#111111]"
       >
         <button
           onClick={() => setShowEmoji((v) => !v)}
@@ -91,8 +89,7 @@ export default function CommentComposer({ postId }: Props) {
           <button
             onClick={handleSubmit}
             disabled={isPending}
-            className="text-sm font-bold shrink-0 transition-opacity disabled:opacity-50"
-            style={{ color: "#7C3AED" }}
+            className="text-sm font-bold shrink-0 transition-opacity disabled:opacity-50 text-[#7C3AED]"
           >
             Post
           </button>
