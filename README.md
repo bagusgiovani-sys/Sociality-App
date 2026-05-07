@@ -1,7 +1,7 @@
 # Sociality
 
 
-🔗 **Live Demo:** [social-media-app-sociality-v1.vercel.app](https://social-media-app-sociality-v1.vercel.app)
+🔗 **Live Demo:** (https://sociality-app-by-gio.vercel.app/)
 
 ---
 
